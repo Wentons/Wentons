@@ -1,0 +1,105 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+
+<html lang="tr">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <meta name="description" content="W E N T O N" />  
+  <title>WENTON</title>    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@700&display=swap" rel="stylesheet" />    <style>  
+    * { overflow: hidden; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }  
+    html, body { height: 100%; }  
+    body { font-family: 'VT323', monospace; background: #000; color: #fff; position: relative; cursor: pointer; }  
+  
+    /* Arka plan video tam ekran */  
+    video#back {  
+      position: fixed;  
+      inset: 0;               /* top:0; right:0; bottom:0; left:0 */  
+      width: 100vw;  
+      height: 100vh;  
+      object-fit: cover;      /* ekrana tam yayılır, kırpar */  
+      z-index: -1;  
+      background: #000;       /* video yüklenene kadar siyah */  
+    }  
+  
+    #main {  
+      position: fixed;  
+      inset: 0;  
+      display: table;  
+      width: 100%;  
+      height: 100%;  
+      text-align: center;  
+      background: rgba(0,0,0,0.5);  
+      z-index: 1;  
+    }  
+    .fof { display: table-cell; vertical-align: middle; }  
+  
+    .fof h1 { font-size: 8vmin; color: #f00; text-shadow: 0 0 10px #f00; margin: 20px 0; }  
+    h2 { font-size: 4vmin; color: #00ccff; text-shadow: 0 0 12px #00ccff; }  
+    h3, h4 { font-size: 2.5vmin; color: #00ff00; text-shadow: 0 0 12px #00ff00; }  
+  
+    .hacker-rain { position: fixed; inset: 0; z-index: 2; pointer-events: none; }  
+    .hacker-rain::before {  
+      content: "0101010101010101010101";  
+      position: absolute; top: -200%;  
+      width: 300%; height: 300%;  
+      opacity: 0.2;  
+      animation: rain-fall 55s linear infinite;  
+      white-space: nowrap;  
+      color: #00ff00;  
+      font-family: 'VT323', monospace;  
+      font-size: 2.5vmin;  
+      text-shadow: 0 0 5px #00ff00;  
+    }  
+    .hacker-rain::after {  
+      content: "0101010101010101010101";  
+      position: absolute; top: -150%;  
+      width: 200%; height: 200%;  
+      opacity: 0.15;  
+      animation: rain-fall 75s linear infinite;  
+      white-space: nowrap;  
+      color: #f0f;  
+      font-family: 'VT323', monospace;  
+      font-size: 2.6vmin;  
+      text-shadow: 0 0 5px #f0f;  
+    }  
+    @keyframes rain-fall {  
+      0% { transform: translateY(0); }  
+      100% { transform: translateY(150vh); }  
+    }  
+  
+    .hacked-message {  
+      color: #ff0000; font-weight: bold; font-size: 10vmin;  
+      text-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #660000;  
+      animation: pulse 4s infinite;  
+    }  
+    @keyframes pulse {  
+      0%,100% { text-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #660000; }  
+      50%     { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #990000; }  
+    }  
+  </style>  </head>  
+<body onclick="unmuteee()">  
+  <div class="hacker-rain"></div>    <!-- Video Arka Plan -->    <video id="back" autoplay loop muted preload="auto" playsinline webkit-playsinline>  
+    <source src="https://tikcdn.io/ssstik/7408223330362248481" type="video/mp4" />  
+    Tarayıcınız video etiketini desteklemiyor.  
+  </video>    <!-- İçerik -->    <div id="main">  
+    <div class="fof">  
+      <h1>H4CKER WENTON</h1>  
+      <h2>I LOVE YOU  A :))</h2>  
+      <h3>DUO : SCOF | YUZIW</h3>  
+      <h4>WEB • CODER • PENTERATİON</h4>  
+      <br />  
+      <p class="hacked-message">TURKİSH</p>  
+    </div>  
+  </div>    <script>  
+    function unmuteee() {  
+      const video = document.getElementById("back");  
+      video.muted = false;  
+      video.play().catch(() => {});  
+    }  
+    document.addEventListener('DOMContentLoaded', () => {  
+      const video = document.getElementById('back');  
+      video.play().catch(() => {});  
+    });  
+  </script>  </body>  
+</html>  
+
