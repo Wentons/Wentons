@@ -1,105 +1,501 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>WENTON </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html lang="tr">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <meta name="description" content="W E N T O N" />  
-  <title>WENTON</title>    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Orbitron:wght@700&display=swap" rel="stylesheet" />    <style>  
-    * { overflow: hidden; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }  
-    html, body { height: 100%; }  
-    body { font-family: 'VT323', monospace; background: #000; color: #fff; position: relative; cursor: pointer; }  
-  
-    /* Arka plan video tam ekran */  
-    video#back {  
-      position: fixed;  
-      inset: 0;               /* top:0; right:0; bottom:0; left:0 */  
-      width: 100vw;  
-      height: 100vh;  
-      object-fit: cover;      /* ekrana tam yayılır, kırpar */  
-      z-index: -1;  
-      background: #000;       /* video yüklenene kadar siyah */  
-    }  
-  
-    #main {  
-      position: fixed;  
-      inset: 0;  
-      display: table;  
-      width: 100%;  
-      height: 100%;  
-      text-align: center;  
-      background: rgba(0,0,0,0.5);  
-      z-index: 1;  
-    }  
-    .fof { display: table-cell; vertical-align: middle; }  
-  
-    .fof h1 { font-size: 8vmin; color: #f00; text-shadow: 0 0 10px #f00; margin: 20px 0; }  
-    h2 { font-size: 4vmin; color: #00ccff; text-shadow: 0 0 12px #00ccff; }  
-    h3, h4 { font-size: 2.5vmin; color: #00ff00; text-shadow: 0 0 12px #00ff00; }  
-  
-    .hacker-rain { position: fixed; inset: 0; z-index: 2; pointer-events: none; }  
-    .hacker-rain::before {  
-      content: "0101010101010101010101";  
-      position: absolute; top: -200%;  
-      width: 300%; height: 300%;  
-      opacity: 0.2;  
-      animation: rain-fall 55s linear infinite;  
-      white-space: nowrap;  
-      color: #00ff00;  
-      font-family: 'VT323', monospace;  
-      font-size: 2.5vmin;  
-      text-shadow: 0 0 5px #00ff00;  
-    }  
-    .hacker-rain::after {  
-      content: "0101010101010101010101";  
-      position: absolute; top: -150%;  
-      width: 200%; height: 200%;  
-      opacity: 0.15;  
-      animation: rain-fall 75s linear infinite;  
-      white-space: nowrap;  
-      color: #f0f;  
-      font-family: 'VT323', monospace;  
-      font-size: 2.6vmin;  
-      text-shadow: 0 0 5px #f0f;  
-    }  
-    @keyframes rain-fall {  
-      0% { transform: translateY(0); }  
-      100% { transform: translateY(150vh); }  
-    }  
-  
-    .hacked-message {  
-      color: #ff0000; font-weight: bold; font-size: 10vmin;  
-      text-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #660000;  
-      animation: pulse 4s infinite;  
-    }  
-    @keyframes pulse {  
-      0%,100% { text-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000, 0 0 36px #660000; }  
-      50%     { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #990000; }  
-    }  
-  </style>  </head>  
-<body onclick="unmuteee()">  
-  <div class="hacker-rain"></div>    <!-- Video Arka Plan -->    <video id="back" autoplay loop muted preload="auto" playsinline webkit-playsinline>  
-    <source src="https://tikcdn.io/ssstik/7408223330362248481" type="video/mp4" />  
-    Tarayıcınız video etiketini desteklemiyor.  
-  </video>    <!-- İçerik -->    <div id="main">  
-    <div class="fof">  
-      <h1>H4CKER WENTON</h1>  
-      <h2>I LOVE YOU  A :))</h2>  
-      <h3>DUO : SCOF | YUZIW</h3>  
-      <h4>WEB • CODER • PENTERATİON</h4>  
-      <br />  
-      <p class="hacked-message">TURKİSH</p>  
-    </div>  
-  </div>    <script>  
-    function unmuteee() {  
-      const video = document.getElementById("back");  
-      video.muted = false;  
-      video.play().catch(() => {});  
-    }  
-    document.addEventListener('DOMContentLoaded', () => {  
-      const video = document.getElementById('back');  
-      video.play().catch(() => {});  
-    });  
-  </script>  </body>  
-</html>  
 
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=VT323&display=swap" rel="stylesheet">
+
+  
+  <script src="https://kit.fontawesome.com/2d3e9f0a4a.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #000;
+      color: #fff;
+      transition: background 0.5s, color 0.5s;
+      text-align: center;
+      overflow-x: hidden;
+      cursor: pointer;
+    }
+
+
+    #snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1; /* Kar efekti en alt katmanda */
+    }
+
+    /* Tema ikonu */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000; /* Tema ikonu en üstte */
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Video çemberi */
+    .circle {
+      margin: 80px auto 20px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      animation: pulse 3s infinite;
+      position: relative;
+      z-index: 10; /* Video karın üstünde */
+      transition: all 0.5s ease;
+    }
+
+    .circle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+    }
+
+    .circle video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* WENTON *\
+    h1 {
+      font-size: 60px;
+      margin-top: 20px;
+      text-shadow: 0 0 15px rgba(255,255,255,0.8);
+      z-index: 10; /* Başlık karın üstünde */
+      position: relative;
+      letter-spacing: 3px;
+    }
+
+    
+    h2 {
+      font-family: 'VT323', monospace;
+      font-size: 28px;
+      font-style: italic;
+      margin-top: 10px;
+      color: white;
+      text-shadow: 0 0 10px rgba(255,255,255,0.8);
+      z-index: 10; /* Alt yazı karın üstünde */
+      position: relative;
+    }
+
+    
+    .social-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 800px;
+      z-index: 10; /* Sosyal medya kutuları karın üstünde */
+      position: relative;
+    }
+
+    .social-box {
+      width: 150px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .social-box:hover::before {
+      left: 100%;
+    }
+
+    .social-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    }
+
+    .social-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      z-index: 2;
+    }
+
+    .social-content i {
+      font-size: 24px;
+    }
+
+    /* Light mode */
+    body.light {
+      background: #fff;
+      color: #111;
+    }
+    body.light .theme-toggle {color: black; background: rgba(255, 255, 255, 0.5);}
+    body.light .theme-toggle:hover {background: rgba(255, 255, 255, 0.7);}
+    body.light h1 {text-shadow: 0 0 15px rgba(0,0,0,0.5);}
+    body.light h2 {color: black; text-shadow: 0 0 10px rgba(0,0,0,0.5);}
+    body.light .social-box {
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 2px solid #000;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+    body.light .social-content {
+      color: black;
+    }
+
+
+    .terminal {
+      margin: 20px auto;
+      padding: 15px;
+      width: 80%;
+      max-width: 600px;
+      border: 2px solid #00ff00;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 10px #00ff00;
+      font-family: 'VT323', monospace;
+      font-size: 24px;
+      color: #00ff00;
+      text-align: left;
+      min-height: 30px;
+      z-index: 10; /* W
+      position: relative;
+    }
+
+    body.light .terminal {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #00aa00;
+      border: 2px solid #00aa00;
+      box-shadow: 0 0 10px #00aa00;
+    }
+
+    
+    .sound-status {
+      margin-top: 10px;
+      font-family: 'VT323', monospace;
+      font-size: 18px;
+      color: white;
+      z-index: 10; /* WENTON
+      position: relative;
+    }
+
+    body.light .sound-status {
+      color: black;
+    }
+
+    /* Animasyon */
+    @keyframes pulse {
+      0%, 100% {box-shadow: 0 0 25px rgba(255,255,255,0.3);}
+      50% {box-shadow: 0 0 40px rgba(255,255,255,0.9);}
+    }
+
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 5s infinite;
+    }
+
+    body.light .star {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes twinkle {
+      0%, 100% {opacity: 0.2;}
+      50% {opacity: 1;}
+    }
+  </style>
+</head>
+<body onclick="toggleVideoSound()">
+ 
+  <div class="theme-toggle" onclick="toggleTheme(event)">
+    <i id="themeIcon" class="fas fa-moon"></i>
+  </div>
+
+
+  <div class="circle">
+    <video id="mainVideo" autoplay loop muted>
+      <source src="https://tikcdn.io/ssstik/7484891028386794772" type="video/mp4">
+      HATA
+    </video>
+  </div>
+
+  
+  <div class="sound-status" id="soundStatus">Ses Kapalı - Açmak için tıklayın</div>
+
+
+  <h1>WENTON</h1>
+  <h2>Ne mutlu Türk'üm diyene!</h2>
+
+  
+  <div class="terminal">
+    <span id="typing-text">[*] </span>
+  </div>
+
+  
+  <div class="social-container">
+    <div class="social-box" onclick="openLink('https://www.instagram.com/wentonss1?igsh=czB6Nm5meWpzMWN5', event)">
+      <div class="social-content">
+        <i class="fab fa-instagram"></i>
+        <span>INSTAGRAM</span>
+      </div>
+    </div>
+    
+    <div class="social-box" onclick="openLink('https://t.me/wentonss1', event)">
+      <div class="social-content">
+        <i class="fab fa-telegram"></i>
+        <span>TELEGRAM</span>
+      </div>
+    </div>
+    
+    <div class="social-box" onclick="openLink('https://wentonss.github.io/WentonAyse/', event)">
+      <div class="social-content">
+        <i class="fab fa-github"></i>
+        <span>AYSE</span>
+      </div>
+    </div>
+    
+    <div class="social-box" onclick="openLink('https://github.com/Wentons', event)">
+      <div class="social-content">
+        <i class="fab fa-github"></i>
+        <span>PROFILE</span>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="stars" id="stars"></div>
+
+  
+  <canvas id="snow"></canvas>
+
+  <script>
+    // Tema değiştirme
+    function toggleTheme(event) {
+      event.stopPropagation();
+      document.body.classList.toggle("light");
+      let icon = document.getElementById("themeIcon");
+      if (document.body.classList.contains("light")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+      
+     
+      updateSnowColor();
+      
+      createStars();
+    }
+
+    // Video ses kontrolü
+    function toggleVideoSound() {
+      const video = document.getElementById('mainVideo');
+      const soundStatus = document.getElementById('soundStatus');
+      
+      if (video.muted) {
+        video.muted = false;
+        soundStatus.textContent = 'Ses Açıldı';
+      } else {
+        video.muted = true;
+        soundStatus.textContent = 'Videodaki Sesi Açmak İçin Bir Kere Tıklayın';
+      }
+    }
+
+    // Link açma fonksiyonu
+    function openLink(url, event) {
+      event.stopPropagation();
+      window.open(url, '_blank');
+    }
+
+    // Yazı animasyonu
+    const texts = [
+      "PHP",
+      "PYTHON",
+      "JAVASCRIPT",
+      "HTML",
+      "SIZMA TESTLERİ",
+      "SOFTWARE",
+      "WEB TASARIM",
+      "WENTON & AYSE",
+      "PHP"
+    ];
+    
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingDelay = 100;
+    let erasingDelay = 50;
+    let newTextDelay = 1000;
+    
+    function typeEffect() {
+      const currentText = texts[textIndex];
+      const typingTextElement = document.getElementById('typing-text');
+      
+      if (isDeleting) {
+        // Metni silme
+        typingTextElement.textContent = "[*] " + currentText.substring(0, charIndex - 1);
+        charIndex--;
+        
+        if (charIndex === 0) {
+          isDeleting = false;
+          textIndex++;
+          if (textIndex >= texts.length) textIndex = 0;
+        }
+      } else {
+        
+        typingTextElement.textContent = "[*] " + currentText.substring(0, charIndex + 1);
+        charIndex++;
+        
+        if (charIndex === currentText.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, newTextDelay);
+          return;
+        }
+      }
+      
+      const delay = isDeleting ? erasingDelay : typingDelay;
+      setTimeout(typeEffect, delay);
+    }
+    
+    
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      starsContainer.innerHTML = '';
+      
+      const starCount = 100;
+      const isLightMode = document.body.classList.contains('light');
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 5 + 's';
+        star.style.animationDuration = Math.random() * 3 + 3 + 's';
+        
+        starsContainer.appendChild(star);
+      }
+    }
+
+    
+    const canvas = document.getElementById('snow');
+    const ctx = canvas.getContext('2d');
+    let snowflakes = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createSnowflakes() {
+      const x = Math.random() * canvas.width;
+      const y = 0;
+      const radius = Math.random() * 4 + 1;
+      const speed = Math.random() * 3 + 1;
+      snowflakes.push({x, y, radius, speed});
+    }
+
+    function updateSnowColor() {
+      
+    }
+
+    function drawSnowflakes() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = document.body.classList.contains('light') ? 'rgba(0, 0, 0, 0.7)' : 'white';
+      ctx.beginPath();
+      for (let flake of snowflakes) {
+        ctx.moveTo(flake.x, flake.y);
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+      }
+      ctx.fill();
+      updateSnowflakes();
+    }
+
+    function updateSnowflakes() {
+      for (let flake of snowflakes) {
+        flake.y += flake.speed;
+        // Hafif yatay hareket ekle
+        flake.x += Math.sin(flake.y / 30) * 0.5;
+        
+        if (flake.y > canvas.height) {
+          flake.y = 0;
+          flake.x = Math.random() * canvas.width;
+        }
+      }
+    }
+
+    
+    window.onload = function() {
+      // Yazı animasyonunu başlat
+      setTimeout(typeEffect, 1000);
+      
+      // Yıldızları oluştur
+      createStars();
+      
+      // Kar efektini başlat
+      setInterval(createSnowflakes, 100);
+      setInterval(drawSnowflakes, 30);
+    }
+  </script>
+</body>
+</html>
